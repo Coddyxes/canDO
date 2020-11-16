@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="logo">Список дел</div>
+        <div class="content">
+            <form class="content__search" id="search" type="text">
+                <input class="search__input" type="text">
+                <input class="search__confirm" type="submit" value="Искать">
+            </form>
+            <ul class="content__task-list" id="task-list">
+            </ul>
+            <form class="content__form-add" id="task-form">
+                <input class="form-add__input" id="task-form__input" type="text">
+                <input class="form-add__button" type="submit" value="Добавить">
+            </form>
+            <div class="content__filter">
+                <input class="filter__all" type="button" value="Все">
+                <input class="filter__in-process" type="button" value="Невыполненые">
+                <input class="filter__completed" type="button" value="Выполненные">
+            </div>
+        </div>
+    </div>
+    <template class="template__task">
+        <li class="task-list__task"></li>
+    </template>
+    <script src="index.js"></script>
+</body>
+</html>
