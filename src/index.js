@@ -34,6 +34,7 @@ const showAll = function () {
   for (let i = 0; i < taskList.querySelectorAll('li').length; i++) {
     taskList.querySelectorAll('li').item(i).classList.remove('hide');
   }
+  goSearch();
 };
 
 // search
@@ -77,9 +78,6 @@ const setFilterButtonGreen = function (currentButton) {
 
 const goFilterList = function (whichFilter) {
   showAll();
-    if (searchInput.value != '') {
-      goSearch()
-    }
   for (let i = 0; i < taskList.querySelectorAll('li').length; i++) {
     if (
       taskList
