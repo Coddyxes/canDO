@@ -36,6 +36,9 @@ input, button, li {
 }
 
 .content__task-list {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
     list-style: none;
     border-radius: 10px;
     border: 1px solid rebeccapurple;
@@ -45,6 +48,7 @@ input, button, li {
 
 .task-list__task {
     padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .content__form-add {
@@ -55,6 +59,7 @@ input, button, li {
 .form-add__input {
     flex-grow: 1;
     padding-left: 30px;
+    font-size: 20px;
 }
 
 .content__filter {
@@ -84,7 +89,7 @@ input, button, li {
 }
 
 .task__text {
-    font-size: 20px;
+    font-size: 30px;
     padding: 20px 30px;
     overflow: hidden;
     width: 200px;
@@ -92,7 +97,7 @@ input, button, li {
     background-color: #8aed8f;
     border-radius: 10px;
     resize: none;
-    
+    font-family: 'Times New Roman', Times, serif;   
 }
 
 .task__button {
