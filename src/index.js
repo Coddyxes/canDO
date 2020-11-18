@@ -76,7 +76,7 @@ contentSearch.addEventListener("submit", (evt) => {
 
 // filter
 
-let curFilter = 'all';
+let curFilter = '.filter__all';
 
 const setFilterButtonGreen = function (currentButton) {
   document
@@ -196,3 +196,4 @@ const saveLocalStorage = function () {
 };
 
 startGetLocalStorage();
+goFilterList(curFilter);
