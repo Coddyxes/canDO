@@ -1,6 +1,5 @@
 const addedTask = document.querySelector(".content__form-add");
 const inputForm = document.querySelector(".form-add__input");
-let isCompleted = false;
 
 addedTask.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -14,8 +13,7 @@ addedTask.addEventListener("submit", (evt) => {
   };
   const completeButton = template.querySelector(".task__complete");
   completeButton.onclick = () => {
-    isCompleted = !isCompleted;
-    if(isCompleted){
+    if(!textAreaLi.classList.contains('task__text--complete')){
       textAreaLi.classList.add("task__text--complete");
       completeButton.classList.add("task__complete--set");
     } else {
