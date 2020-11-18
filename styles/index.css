@@ -68,17 +68,16 @@ input, button, li {
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
-.filter__all {
+.filter__all, .filter__in-process, .filter__completed {
     flex-grow: 1;
+    height: 30px;
 }
 
-.filter__in-process {
-}
-
-.filter__completed {
+.filter__button--green {
+    background-color: #5ed952;
 }
 
 .template__task {
