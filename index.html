@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles/index.css">
     <title>Document</title>
 </head>
 <body>
@@ -11,13 +11,13 @@
         <div class="logo">Список дел</div>
         <div class="content">
             <form class="content__search" id="search" type="text">
-                <input class="search__input" type="text">
+                <input class="search__input" type="text" placeholder="Что вы хотите найти?">
                 <input class="search__confirm" type="submit" value="Искать">
             </form>
             <ul class="content__task-list" id="task-list">
             </ul>
             <form class="content__form-add" id="task-form">
-                <input class="form-add__input" id="task-form__input"
+                <input class="form-add__input" id="task-form__input" maxlength="20"
                 type="text" autofocus placeholder="Что вы хотите сделать?">
                 <input class="form-add__button" type="submit" value="Добавить">
             </form>
@@ -37,6 +37,6 @@
             </div>
         </li>
     </template>
-    <script src="index.js"></script>
+    <script src="src/index.js"></script>
 </body>
 </html>
