@@ -74,9 +74,31 @@ contentSearch.addEventListener("submit", (evt) => {
   goFilterList(curFilter);
 });
 
+// delete completed
+
+const deleteCompleted = function () {
+  for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
+    if (
+      taskList
+        .querySelectorAll("li")
+        .item(i)
+        .querySelector(".task__text")
+        .classList.contains("task__text--complete")
+    ) {
+      taskList.querySelectorAll("li").item(i).remove();
+    }
+  }
+  saveLocalStorage();
+};
+
+document.querySelector('.clear-completed__input').addEventListener('click', (evt) => {
+  evt.preventDefault();
+  deleteCompleted();
+})
+
 // filter
 
-let curFilter = '.filter__all';
+let curFilter = ".filter__all";
 
 const setFilterButtonGreen = function (currentButton) {
   document
@@ -88,9 +110,7 @@ const setFilterButtonGreen = function (currentButton) {
   document
     .querySelector(".filter__completed")
     .classList.remove("filter__button--green");
-  document
-    .querySelector(currentButton)
-    .classList.add("filter__button--green");
+  document.querySelector(currentButton).classList.add("filter__button--green");
 };
 
 const goFilterList = function (whichFilter) {
@@ -99,34 +119,30 @@ const goFilterList = function (whichFilter) {
   showAll();
   goSearch();
 
-  for (let i = 0; i < taskList
-    .querySelectorAll("li").length; i++) {
+  for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
     if (
-        taskList
+      taskList
         .querySelectorAll("li")
         .item(i)
         .querySelector(".task__text")
         .classList.contains("task__text--complete")
     ) {
-      if (whichFilter == '.filter__in-process') {
-        taskList.querySelectorAll("li")
-        .item(i).classList.add("hide");
+      if (whichFilter == ".filter__in-process") {
+        taskList.querySelectorAll("li").item(i).classList.add("hide");
       }
-    } else { // если фильтруется по незавершенным
-      if (whichFilter == '.filter__completed') {
-        taskList.querySelectorAll("li")
-        .item(i).classList.add("hide");
+    } else {
+      // если фильтруется по незавершенным
+      if (whichFilter == ".filter__completed") {
+        taskList.querySelectorAll("li").item(i).classList.add("hide");
       }
     }
   }
 };
 
-document
-  .querySelector(".filter__all")
-  .addEventListener("click", (evt) => {
+document.querySelector(".filter__all").addEventListener("click", (evt) => {
   evt.preventDefault();
   showAll();
-  curFilter = '.filter__all';
+  curFilter = ".filter__all";
   goFilterList(curFilter);
 });
 
@@ -134,7 +150,7 @@ document
   .querySelector(".filter__in-process")
   .addEventListener("click", (evt) => {
     evt.preventDefault();
-    curFilter = '.filter__in-process';
+    curFilter = ".filter__in-process";
     goFilterList(curFilter);
   });
 
@@ -142,7 +158,7 @@ document
   .querySelector(".filter__completed")
   .addEventListener("click", (evt) => {
     evt.preventDefault();
-    curFilter = '.filter__completed';
+    curFilter = ".filter__completed";
     goFilterList(curFilter);
   });
 
