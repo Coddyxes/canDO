@@ -42,7 +42,6 @@ const showAll = function () {
   for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
     taskList.querySelectorAll("li").item(i).classList.remove("hide");
   }
-  goSearch();
 };
 
 // search
@@ -72,10 +71,12 @@ const goSearch = function () {
 
 contentSearch.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  goSearch();
+  goFilterList(curFilter);
 });
 
 // filter
+
+let curFilter = 'all';
 
 const setFilterButtonGreen = function (currentButton) {
   document
@@ -87,50 +88,62 @@ const setFilterButtonGreen = function (currentButton) {
   document
     .querySelector(".filter__completed")
     .classList.remove("filter__button--green");
-  document.querySelector(currentButton).classList.add("filter__button--green");
+  document
+    .querySelector(currentButton)
+    .classList.add("filter__button--green");
 };
 
 const goFilterList = function (whichFilter) {
+  setFilterButtonGreen(whichFilter);
+
   showAll();
-  for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
+  goSearch();
+
+  for (let i = 0; i < taskList
+    .querySelectorAll("li").length; i++) {
     if (
-      taskList
+        taskList
         .querySelectorAll("li")
         .item(i)
         .querySelector(".task__text")
         .classList.contains("task__text--complete")
     ) {
-      if (whichFilter) {
-        taskList.querySelectorAll("li").item(i).classList.add("hide");
+      if (whichFilter == '.filter__in-process') {
+        taskList.querySelectorAll("li")
+        .item(i).classList.add("hide");
       }
-    } else {
-      if (!whichFilter) {
-        taskList.querySelectorAll("li").item(i).classList.add("hide");
+    } else { // если фильтруется по незавершенным
+      if (whichFilter == '.filter__completed') {
+        taskList.querySelectorAll("li")
+        .item(i).classList.add("hide");
       }
     }
   }
 };
 
-document.querySelector(".filter__all").addEventListener("click", (evt) => {
+document
+  .querySelector(".filter__all")
+  .addEventListener("click", (evt) => {
   evt.preventDefault();
   showAll();
-  setFilterButtonGreen(".filter__all");
+  curFilter = '.filter__all';
+  goFilterList(curFilter);
 });
 
 document
   .querySelector(".filter__in-process")
   .addEventListener("click", (evt) => {
     evt.preventDefault();
-    goFilterList(true);
-    setFilterButtonGreen(".filter__in-process");
+    curFilter = '.filter__in-process';
+    goFilterList(curFilter);
   });
 
 document
   .querySelector(".filter__completed")
   .addEventListener("click", (evt) => {
     evt.preventDefault();
-    goFilterList(false);
-    setFilterButtonGreen(".filter__completed");
+    curFilter = '.filter__completed';
+    goFilterList(curFilter);
   });
 
 // localStorage
