@@ -93,13 +93,35 @@ input, button, li {
     padding: 20px 30px;
     overflow: hidden;
     width: 200px;
-    height: 50px;
+    height: 70px;
     background-color: #8aed8f;
     border-radius: 10px;
     resize: none;
     font-family: 'Times New Roman', Times, serif;   
 }
 
-.task__button {
+.task__text--complete {
+    text-decoration: line-through;
+    background-color: #959c96;
+}
 
+.task__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.task__complete {
+    flex-grow: 1;
+    background-color: #5ed952;
+}
+
+.task__complete--set {
+    background-color: #d9de59;
+}
+
+.task__close {
+    flex-grow: 1;
+    background-color: #de7189;
 }

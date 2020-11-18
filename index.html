@@ -31,7 +31,10 @@
     <template class="template__task">
         <li class="task-list__task">
             <textarea class="task__text" contenteditable="true" aria-multiline="true"></textarea>
-            <button class="task__close">Удалить</button>
+            <div class="task__buttons">
+                <button class="task__complete">Выполнено</button>
+                <button class="task__close">Удалить</button>
+            </div>
         </li>
     </template>
     <script src="index.js"></script>
