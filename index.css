@@ -54,6 +54,7 @@ input, button, li {
 
 .form-add__input {
     flex-grow: 1;
+    padding-left: 30px;
 }
 
 .content__filter {
@@ -74,5 +75,26 @@ input, button, li {
 }
 
 .template__task {
+
+}
+
+.task-list__task {
+    display: flex;
+    justify-content: space-around;
+}
+
+.task__text {
+    font-size: 20px;
+    padding: 20px 30px;
+    overflow: hidden;
+    width: 200px;
+    height: 50px;
+    background-color: #8aed8f;
+    border-radius: 10px;
+    resize: none;
+    
+}
+
+.task__button {
 
 }

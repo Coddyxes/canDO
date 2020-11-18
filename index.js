@@ -6,10 +6,11 @@ addedTask.addEventListener("submit", (evt) => {
   const taskList = document.querySelector(".content__task-list");
   const template = document.querySelector(".template__task").content.cloneNode(true);
   const deleteButton = template.querySelector("button");
+  const textAreaLi = template.querySelector("textarea");
+  textAreaLi.value = inputForm.value;
   deleteButton.onclick = function(){
    this.parentElement.remove();
   };
-  template.querySelector("li").prepend(inputForm.value);
   taskList.appendChild(template);
   inputForm.value = "";
 });
