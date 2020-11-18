@@ -25,8 +25,10 @@ const createListElement = function (textListElement) {
       textAreaLi.classList.remove("task__text--complete");
       completeButton.classList.remove("task__complete--set");
     }
+    saveLocalStorage();
   };
   taskList.appendChild(template);
+  inputForm.value = "";
 };
 
 addedTask.addEventListener("submit", (evt) => {
@@ -133,17 +135,51 @@ document
 
 // localStorage
 
+const objLocalStorage = {
+  value: "",
+  isDone: false,
+};
+
 const startGetLocalStorage = function () {
   for (let i = 0; i < localStorage.length; i++) {
-    createListElement(localStorage.getItem(`${i}`));
+    let curObjLocalStorage = JSON.parse(localStorage.getItem(`${i}`));
+    createListElement(curObjLocalStorage.value);
+    if (curObjLocalStorage.isDone) {
+      taskList
+        .querySelectorAll("li")
+        .item(i)
+        .querySelector(".task__complete")
+        .classList.add("task__complete--set");
+      taskList
+        .querySelectorAll("li")
+        .item(i)
+        .querySelector(".task__text")
+        .classList.add("task__text--complete");
+    }
   }
 };
 
 const saveLocalStorage = function () {
   localStorage.clear();
   for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
-    localStorage.setItem(`${i}`, taskList.querySelectorAll("li").item(i).querySelector('.task__text').value);
+    if (
+      taskList
+        .querySelectorAll("li")
+        .item(i)
+        .querySelector(".task__complete")
+        .classList.contains("task__complete--set")
+    ) {
+      objLocalStorage.isDone = true;
+    } else {
+      objLocalStorage.isDone = false;
+    }
+
+    objLocalStorage.value = taskList
+      .querySelectorAll("li")
+      .item(i)
+      .querySelector(".task__text").value;
+    localStorage.setItem(`${i}`, JSON.stringify(objLocalStorage));
   }
-}
+};
 
 startGetLocalStorage();
