@@ -15,6 +15,7 @@ addedTask.addEventListener("submit", (evt) => {
   deleteButton.onclick = function () {
     this.parentElement.parentElement.remove();
   };
+
   const completeButton = template.querySelector(".task__complete");
   completeButton.onclick = () => {
     if (!textAreaLi.classList.contains("task__text--complete")) {
@@ -31,6 +32,12 @@ addedTask.addEventListener("submit", (evt) => {
 
 // search
 
+const showAll = function () {
+  for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
+    taskList.querySelectorAll("li").item(i).classList.remove("hide");
+  }
+};
+
 const contentSearch = document.querySelector(".content__search");
 const searchInput = document.querySelector(".search__input");
 
@@ -43,7 +50,10 @@ contentSearch.addEventListener("submit", (evt) => {
   } else {
     for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
       if (
-        !taskList.querySelectorAll("li").item(i).querySelector(".task__text")
+        !taskList
+          .querySelectorAll("li")
+          .item(i)
+          .querySelector(".task__text")
           .value.includes(searchInput.value)
       ) {
         taskList.querySelectorAll("li").item(i).classList.add("hide");
@@ -51,3 +61,46 @@ contentSearch.addEventListener("submit", (evt) => {
     }
   }
 });
+
+// filter
+
+const goFilterList = function (whichFilter) {
+  for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
+    if (
+      taskList
+        .querySelectorAll("li")
+        .item(i)
+        .querySelector(".task__text")
+        .classList.contains('task__text--complete')
+    ) {
+      if (whichFilter){
+        taskList.querySelectorAll("li").item(i).classList.add("hide");
+      }
+    } else {
+      if (!whichFilter){
+        taskList.querySelectorAll("li").item(i).classList.add("hide");
+      }
+    }
+  }
+} 
+
+document.querySelector(".filter__all").addEventListener("click", (evt) => {
+  evt.preventDefault();
+  showAll();
+});
+
+document
+  .querySelector(".filter__in-process")
+  .addEventListener("click", (evt) => {
+    evt.preventDefault();
+    showAll();
+    goFilterList(true);
+  });
+
+document
+  .querySelector(".filter__completed")
+  .addEventListener("click", (evt) => {
+    evt.preventDefault();
+    showAll();
+    goFilterList(false);
+  });
