@@ -74,6 +74,15 @@ contentSearch.addEventListener("submit", (evt) => {
   goFilterList(curFilter);
 });
 
+// control textArea of Task
+
+function textAreaGrow (evt) {
+  evt.style.height = "1px";
+  evt.style.height = (25+evt.scrollHeight)+"px";
+}
+
+
+
 // delete completed
 
 const deleteCompleted = function () {

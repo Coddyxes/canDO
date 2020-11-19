@@ -100,10 +100,9 @@ input, button, li {
 
 .task__text {
     font-size: 30px;
-    padding: 20px 30px;
+    padding: 30px;
+    padding-bottom: 0px;
     overflow: hidden;
-    width: 200px;
-    height: 70px;
     background-color: #8aed8f;
     border-radius: 10px;
     resize: none;

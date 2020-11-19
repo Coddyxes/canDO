@@ -17,7 +17,7 @@
             <ul class="content__task-list" id="task-list">
             </ul>
             <form class="content__form-add" id="task-form">
-                <input class="form-add__input" id="task-form__input" maxlength="20"
+                <input class="form-add__input" id="task-form__input"
                 type="text" autofocus placeholder="Что вы хотите сделать?">
                 <input class="form-add__button" type="submit" value="Добавить">
             </form>
@@ -33,7 +33,7 @@
     </div>
     <template class="template__task">
         <li class="task-list__task">
-            <textarea class="task__text" contenteditable="true" aria-multiline="true"></textarea>
+            <textarea class="task__text" onkeyup="textAreaGrow(this)"></textarea>
             <div class="task__buttons">
                 <button class="task__complete">Выполнено</button>
                 <button class="task__close">Удалить</button>
