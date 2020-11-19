@@ -77,7 +77,8 @@ contentSearch.addEventListener("submit", (evt) => {
 // delete completed
 
 const deleteCompleted = function () {
-  for (let i = 0; i < taskList.querySelectorAll("li").length; i++) {
+  let taskLength = taskList.querySelectorAll("li").length;
+  for (let i = 0; i < taskLength; i++) {
     if (
       taskList
         .querySelectorAll("li")
@@ -86,6 +87,8 @@ const deleteCompleted = function () {
         .classList.contains("task__text--complete")
     ) {
       taskList.querySelectorAll("li").item(i).remove();
+      taskLength--;
+      i--;
     }
   }
   saveLocalStorage();
