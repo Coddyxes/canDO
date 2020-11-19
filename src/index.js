@@ -83,6 +83,7 @@ function textAreaGrow (evt) {
   } else {
     evt.style.height = "1px";
     evt.style.height = (25+evt.scrollHeight)+"px";
+    saveLocalStorage();
   }
 }
 
