@@ -27,6 +27,7 @@ const createListElement = function (textListElement) {
     }
     saveLocalStorage();
   };
+  textAreaGrow(template.querySelector('.task__text'));
   taskList.appendChild(template);
   inputForm.value = "";
 };
@@ -77,8 +78,12 @@ contentSearch.addEventListener("submit", (evt) => {
 // control textArea of Task
 
 function textAreaGrow (evt) {
-  evt.style.height = "1px";
-  evt.style.height = (25+evt.scrollHeight)+"px";
+  if(evt.scrollHeight == 0) {
+    evt.style.height = Math.ceil(Number(evt.value.length) / 14) * 50 + 'px';
+  } else {
+    evt.style.height = "1px";
+    evt.style.height = (25+evt.scrollHeight)+"px";
+  }
 }
 
 
