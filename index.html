@@ -11,15 +11,14 @@
         <div class="logo">Список дел</div>
         <div class="content">
             <form class="content__search" id="search" type="text">
-                <input class="search__input" type="text" placeholder="Что вы хотите найти?">
-                <input class="search__confirm" type="submit" value="Искать">
+                <input class="search__input" type="text" 
+                placeholder="Искать..." onkeyup="goSearch()">
             </form>
             <ul class="content__task-list" id="task-list">
             </ul>
             <form class="content__form-add" id="task-form">
                 <input class="form-add__input" id="task-form__input" maxlength="200"
-                type="text" autofocus placeholder="Что вы хотите сделать?">
-                <input class="form-add__button" type="submit" value="Добавить">
+                type="text" autofocus placeholder="Добавить задачу...">
             </form>
             <form class="content__clear-completed">
                 <input class="clear-completed__input" type="button" value="Удалить выполненные">

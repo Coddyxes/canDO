@@ -87,8 +87,6 @@ function textAreaGrow (evt) {
   }
 }
 
-
-
 // delete completed
 
 const deleteCompleted = function () {
